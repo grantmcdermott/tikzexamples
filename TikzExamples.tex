@@ -25,7 +25,15 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 \begin{document}
 	\maketitle
 
-%\section*{Equimarginal principle}
+%----------- new slide ---------------------------------------%
+
+\begin{frame}{Quick links}
+\tableofcontents
+\end{frame}
+
+%----------- new section -------------------------------------%
+
+\section{Equimarginal principle}
 
 %----------- new slide ---------------------------------------%
 
@@ -83,6 +91,46 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 \end{frame}
 
+%----------- new section -------------------------------------%
+
+\section{Public goods taxonomy}
+
+%----------- new slide ---------------------------------------%
+
+\begin{frame}{Public goods taxonomy}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}%[scale=.8]
+		\draw [<->,thick] (0,-0) rectangle (10,6);
+		\draw [->, very thick] (0.25,-0.5) -- (9.75,-0.5) node [pos=0.5, below] {Nonrivalry}; 
+		\draw [->, very thick] (-0.5,0.25) -- (-0.5,5.75) node [rotate=90, pos=0.5, above] {Nonexcludability};
+		\node[right] at (0.5,1.75) {\scriptsize \textbf{PURE PRIVATE GOODS}};
+		\node[right] at (0.5,4.25) {\scriptsize \textbf{OPEN-ACCESS RESOURCES}};
+		\node[left] at (9.5,1.75) {\scriptsize \textbf{CLUB GOODS}};
+		\node[left] at (9.5,4.25) {\scriptsize \textbf{PURE PUBLIC GOODS}};
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+
+%----------- new section -------------------------------------%
+
+\section{Externality with deadweight loss}
+
+%----------- new slide ---------------------------------------% 
+
+\begin{frame}{Externality with deadweight loss}
+
+	For this example:
+	\begin{itemize}
+		\item Marginal benefits: $MB(e) = 40-e^2$
+		\item Private marginal cost: $PMC(e) = 15$
+		\item Marginal damages: $MD(e) = e^2+7$
+	\end{itemize}
+
+	We'll compare the unregulated and social outcomes, and highlight the resulting deadweight loss.
+	
+\end{frame}
 %----------- new slide ---------------------------------------%
 
 \begin{frame}{Externality with deadweight loss}
@@ -116,8 +164,8 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	\addplot[name path=MB, domain={0:7}, thick] {40-x^2} node[pos=0, above right]{$MB$};
 	%%% PMC curve
 	\addplot[name path=PMC, domain={0:7}, thick] {15} node[right]{$PMC$};
-	%%% Define MEC curve
-	\addplot[name path=MEC, domain={0:6.5}, thick, dashed] {\x^2+7} node[right]{$MEC$};
+	%%% Define MD curve
+	\addplot[name path=MD, domain={0:6.5}, thick, dashed] {\x^2+7} node[right]{$MD$};
 	%% SMC curve
 	\addplot[name path=SMC, domain={0:6.5}, thick] {x^2+22} node[above right]{$SMC$};
 	
@@ -136,6 +184,25 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	\end{axis}
 	\end{tikzpicture}
 \end{figure}
+\end{frame}
+
+%----------- new section -------------------------------------%
+
+\section{Tradeable permits}
+
+%----------- new slide ---------------------------------------% 
+
+\begin{frame}{Tradeable permits}
+
+	For this example:
+	\begin{itemize}
+		\item {\color{myred}$MAC_1 = 2 + \frac{1}{2}A_1$}
+		\item {\color{myblue}$MAC_2 = \frac{3}{2}A_2$}
+		\item Total cap = 20 tons
+	\end{itemize}
+
+	We'll compare outcomes and gains from trade versus a uniform allocation (i.e. where each firm abates 10 tons).
+	
 \end{frame}
 
 %----------- new slide ---------------------------------------% 
@@ -166,7 +233,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		\addplot[name path=MAC1, domain={0:20}, thick, myred] {(2+1/2*x)} node[above left]{$MAC_1$};
 		
 		% MAC_2 curve
-		\addplot[name path=MAC2, domain={0:20}, thick, myblue] {30-1.5*x} node[pos=0,anchor=south west]{$MAC_2$};
+		\addplot[name path=MAC2, domain={0:20}, thick, myblue] {30-3/2*x} node[pos=0,anchor=south west]{$MAC_2$};
 		
 		% Equilibria
 		%% Have to multiply all these numbers by 10. (Why? Not sure...)
@@ -192,7 +259,6 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		\addplot[name path=g, draw=none, domain={0:20}] {(9)};
 		\addplot[fill=myred!50]fill between[of=g and MAC1, soft clip={domain=10:14}];
 		\addplot[fill=myblue!50]fill between[of=MAC2 and g, soft clip={domain=10:14}];
-		%	\node[coordinate, pin={[pin edge={myred, thick}]30:{\textbf{{\color{myred}DWL}}}}, thick] at (axis cs:4.8,20){};
 		
 		\end{axis}
 		
@@ -215,10 +281,13 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	\end{figure}
 \end{frame}
 
+%----------- new section -------------------------------------%
+
+\section{Prices vs Quantities (Weitzman rule)}
 
 %----------- new slide ---------------------------------------% 
 
-\begin{frame}{Prices vs Quantities (Weitzman rule)}
+\begin{frame}{Prices vs Quantities (1): Permits preferred}
 
 	\begin{figure}
 		\centering
@@ -276,9 +345,10 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	$MAC$ \underline{flat} relative to $MAB$, but uncertain. (Truth is $MAC_H$.)
 
 \end{frame}
+
 %----------- new slide ---------------------------------------% 
 
-\begin{frame}{Prices vs Quantities (Weitzman rule)}
+\begin{frame}{Prices vs Quantities (2): Tax preferred}
 
 	\begin{figure}
 		\centering
@@ -339,7 +409,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 % %----------- new slide ---------------------------------------% 
 
-% \begin{frame}{Prices vs Quantities (Weitzman rule)}
+% \begin{frame}{Prices vs Quantities (3)}
 
 % 	\begin{figure}
 % 		\centering
@@ -400,25 +470,12 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 % \end{frame}
 
-%----------- new slide ---------------------------------------%
+%----------- new section -------------------------------------%
 
-\begin{frame}{Public goods taxonomy}
-	\begin{figure}
-		\centering
-		\begin{tikzpicture}%[scale=.8]
-		\draw [<->,thick] (0,-0) rectangle (10,6);
-		\draw [->, very thick] (0.25,-0.5) -- (9.75,-0.5) node [pos=0.5, below] {Nonrivalry}; 
-		\draw [->, very thick] (-0.5,0.25) -- (-0.5,5.75) node [rotate=90, pos=0.5, above] {Nonexcludability};
-		\node[right] at (0.5,1.75) {\scriptsize \textbf{PURE PRIVATE GOODS}};
-		\node[right] at (0.5,4.25) {\scriptsize \textbf{OPEN-ACCESS RESOURCES}};
-		\node[left] at (9.5,1.75) {\scriptsize \textbf{CLUB GOODS}};
-		\node[left] at (9.5,4.25) {\scriptsize \textbf{PURE PUBLIC GOODS}};
-		\end{tikzpicture}
-	\end{figure}
-\end{frame}
+\section{Environmental Kuznets curve}
 
-
-\begin{frame}{Environmental Kuznets curve}
+%----------- new slide ---------------------------------------% 
+\begin{frame}{EKC}
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
@@ -433,7 +490,6 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		ytick=\empty, 
 		xtick=\empty
 		]
-		%		\addplot[name path=EKC, domain={0:12}, thick] {(x+9)-(x-3)^2+10};
 		\addplot[name path=EKC, domain={0:12}, thick] {11*x-x^2};
 		\end{axis}
 		\end{tikzpicture}
