@@ -84,64 +84,6 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 \end{frame}
 
 %----------- new slide ---------------------------------------%
-%
-%\begin{frame}{Externality with deadweight loss}
-%	
-%	\begin{figure}
-%		\centering
-%		\begin{tikzpicture}[%yscale=1.05, 
-%		xscale=1]
-%		\begin{axis}[
-%		width = .9\textwidth,
-%		height = .9\textheight,
-%		axis lines=middle,
-%		xlabel=Emissions ($e$),
-%		ylabel=Price (\$),
-%		ylabel near ticks,  
-%		every axis x label/.style={
-%			at={(ticklabel* cs:1.05)},
-%			anchor=west,
-%		},
-%		xlabel style={at={(ticklabel* cs:1)}, anchor=north},
-%		every axis y label/.style={
-%			at={(ticklabel* cs:1.05)},
-%			anchor=south,
-%		}, 
-%		xtick={3,5}, xticklabels={$e^*$,$e_m$},
-%		ytick={5, 21}, yticklabels={$p_m$,$p^*$},
-%		xmin = 0, 
-%		xmax = 8, 
-%		ymin = 0, 
-%		ymax = 60
-%		]
-%		
-%		%% MB curve
-%		\addplot[name path=MB, domain={0:5.5}, thick] {30-x^2} node[above right]{$MB$};
-%		%%% PMC curve
-%		\addplot[name path=PMC, domain={0:7}, thick] {5} node[right]{$PMC$};
-%		%%% Define MEC curve
-%		\addplot[name path=MEC, domain={0:6}, thick, dashed] {\x^2+7} node[below right]{$MEC$};
-%		%% SMC curve
-%		\addplot[name path=SMC, domain={0:6}, thick] {x^2+12} node[above right]{$SMC$};
-%		
-%		%% Equilibria
-%		\coordinate (yend) at (0,50);
-%		\coordinate (xend) at (7,0);
-%		\path [name intersections={of=MB and PMC, by={eqm_m}}]; 
-%		\path [name intersections={of=MB and SMC, by={eqm_s}}]; 
-%		\draw[densely dashed]  (yend |- eqm_m) -- (eqm_m) -- (eqm_m |- xend);
-%		\draw[densely dashed]  (yend |- eqm_s) -- (eqm_s) -- (eqm_s |- xend);
-%		
-%		%% DWL
-%		\addplot[fill=myred!50]fill between[of=SMC and MB, soft clip={domain=3:5}];
-%		\node[coordinate, pin={[pin edge={myred, thick}]30:{\textbf{{\color{myred}DWL}}}}, thick] at (axis cs:4.8,20){};
-%		
-%		\end{axis}
-%		\end{tikzpicture}
-%	\end{figure}
-%\end{frame}
-
-%----------- new slide ---------------------------------------%
 
 \begin{frame}{Externality with deadweight loss}
 
@@ -196,7 +138,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 \end{figure}
 \end{frame}
 
-%----------- new slide ---------------------------------------%
+%----------- new slide ---------------------------------------% 
 
 \begin{frame}{Tradeable permits}
 
@@ -216,8 +158,8 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		ytick=\empty,
 		xtick={10,14}, xticklabels={{\color{myred}10} {\color{myblue}(10)},{\color{myred}14} {\color{myblue}(6)}},
 		ytick={7,9}, yticklabels={{\color{gray} 7}, 9},
-		xlabel=$\longleftarrow$ Abatement (20 tonnes total) $\longrightarrow$,
-		ylabel={\color{myred} \$/unit},
+		xlabel=$\longleftarrow$ Abatement (20 tons total) $\longrightarrow$,
+		ylabel={\color{myred} \$/ton},
 		ylabel style={at={(ticklabel* cs:1.05)}, anchor=south east},
 		]
 		% MAC_1 curve
@@ -262,7 +204,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		axis x line=none,
 		xmin=0, xmax=20,
 		ymin=0, ymax=35,
-		ylabel={\color{myblue} \$/unit},
+		ylabel={\color{myblue} \$/ton},
 		ylabel style={at={(ticklabel* cs:1.05)}, anchor=north east},
 		ytick=\empty,
 		ytick={15,9}, yticklabels={{\color{gray} 15}, 9},
@@ -272,6 +214,191 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		\end{tikzpicture}
 	\end{figure}
 \end{frame}
+
+
+%----------- new slide ---------------------------------------% 
+
+\begin{frame}{Prices vs Quantities (Weitzman rule)}
+
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}%[%yscale=1.05, xscale=1]
+		\begin{axis}[
+		width = .9\textwidth,
+		height = .9\textheight,
+		axis lines=middle,
+		%xlabel=A,
+		%ylabel=P,
+		ylabel near ticks,  
+		xlabel style={at={(ticklabel* cs:1)}, anchor=north},
+		ylabel style={at={(ticklabel* cs:1)}, anchor=south},
+	%	every axis y label/.style={
+	%		at={(ticklabel* cs:1.05)},
+	%		anchor=south,
+	%	}, 
+		xtick={6, 8}, xticklabels={$A_H^*$, $A_E$},
+		ytick={9, 7}, yticklabels={$\tau_H^*$,$\tau_E$},
+		xmin = 0, 
+		xmax = 18, 
+		ymin = 0, 
+		ymax = 18
+		]
+		
+		%% MAB curve
+		\addplot[name path=MAB, domain={0:15}, thick] {15-x} node[above right]{$MAB$};
+		%% MAC_L curve
+		\addplot[name path=MAC_L, domain={0:15}, thick] {0.5*x} node[right]{$MAC_L$};
+		%%% Define E[MAC] curve
+		\addplot[name path=EMAC, domain={0:15}, thick, dashed] {3 + 0.5*x} node[right]{$E\left[MAC\right]$};
+		%% MAC_H curve
+		\addplot[name path=MAC_H, domain={0:15}, thick] {6 + 0.5*x} node[right]{$MAC_H$};
+		
+		%% Equilibria
+		\coordinate (yend) at (0,50);
+		\coordinate (xend) at (50,0);
+		\path [name intersections={of=MAB and EMAC, by={eqm_e}}]; 
+		\fill (eqm_e) circle (2pt);
+		\path [name intersections={of=MAB and MAC_H, by={eqm_t}}]; 
+		\fill (eqm_t) circle (2pt);
+		\draw[dashed]  (yend |- eqm_e) -- (eqm_e) -- (eqm_e |- xend);
+		\draw[densely dotted]  (yend |- eqm_t) -- (eqm_t) -- (eqm_t |- xend);
+		
+		%% DWL
+		\addplot[fill=myred!50]fill between[of=MAC_H and MAB, soft clip={domain=2:6}];
+		\node[coordinate, pin={[pin edge={myred}]86:{{\scriptsize \color{myred}Tax DWL}}}] at (axis cs:3, 10.5){};
+		\addplot[fill=myblue!50]fill between[of=MAC_H and MAB, soft clip={domain=6:8}];
+		\node[coordinate, pin={[pin edge={myblue}]88:{{\scriptsize \color{myblue}Permits DWL}}}] at (axis cs:7, 9){};
+
+		\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+
+	$MAC$ \underline{flat} relative to $MAB$, but uncertain. (Truth is $MAC_H$.)
+
+\end{frame}
+%----------- new slide ---------------------------------------% 
+
+\begin{frame}{Prices vs Quantities (Weitzman rule)}
+
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}%[%yscale=1.05, xscale=1]
+		\begin{axis}[
+		width = .9\textwidth,
+		height = .9\textheight,
+		axis lines=middle,
+		%xlabel=A,
+		%ylabel=P,
+		ylabel near ticks,  
+		xlabel style={at={(ticklabel* cs:1)}, anchor=north},
+		ylabel style={at={(ticklabel* cs:1)}, anchor=south},
+	%	every axis y label/.style={
+	%		at={(ticklabel* cs:1.05)},
+	%		anchor=south,
+	%	}, 
+		xtick={6, 4}, xticklabels={$A_H^*$, $A_E$},
+		ytick={9, 10}, yticklabels={$\tau_H^*$,$\tau_E$},
+		xmin = 0, 
+		xmax = 12, 
+		ymin = 0, 
+		ymax = 16
+		]
+		
+		%% MAB curve
+		\addplot[name path=MAB, domain={0:11}, thick] {12-0.5*x} node[below]{$MAB$};
+		%% MAC_L curve
+		\addplot[name path=MAC_L, domain={0:9}, thick] {x} node[right]{$MAC_L$};
+		%%% Define E[MAC] curve
+		\addplot[name path=EMAC, domain={0:9}, thick, dashed] {3 + x} node[right]{$E\left[MAC\right]$};
+		%% MAC_H curve
+		\addplot[name path=MAC_H, domain={0:9}, thick] {6 + x} node[right]{$MAC_H$};
+		
+		%% Equilibria
+		\coordinate (yend) at (0,50);
+		\coordinate (xend) at (50,0);
+		\path [name intersections={of=MAB and EMAC, by={eqm_e}}]; 
+		\fill (eqm_e) circle (2pt);
+		\path [name intersections={of=MAB and MAC_H, by={eqm_t}}]; 
+		\fill (eqm_t) circle (2pt);
+		\draw[dashed]  (yend |- eqm_e) -- (eqm_e) -- (eqm_e |- xend);
+		\draw[densely dotted]  (yend |- eqm_t) -- (eqm_t) -- (eqm_t |- xend);
+		
+		%% DWL
+		\addplot[fill=myred!50]fill between[of=MAC_H and MAB, soft clip={domain=3:4}];
+		\node[coordinate, pin={[pin edge={myred}]95:{{\scriptsize \color{myred}Tax DWL}}}] at (axis cs:3.5, 10){};
+		\addplot[fill=myblue!50]fill between[of=MAC_H and MAB, soft clip={domain=4:6}];
+		\node[coordinate, pin={[pin edge={myblue}]90:{{\scriptsize \color{myblue}Permits DWL}}}] at (axis cs:5.25, 10.75){};
+
+		\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+
+	$MAC$ \underline{steep} relative to $MAB$, but uncertain. (Truth is $MAC_H$.)
+
+\end{frame}
+
+% %----------- new slide ---------------------------------------% 
+
+% \begin{frame}{Prices vs Quantities (Weitzman rule)}
+
+% 	\begin{figure}
+% 		\centering
+% 		\begin{tikzpicture}%[%yscale=1.05, xscale=1]
+% 		\begin{axis}[
+% 		width = .9\textwidth,
+% 		height = .9\textheight,
+% 		axis lines=middle,
+% 		%xlabel=A,
+% 		%ylabel=P,
+% 		ylabel near ticks,  
+% 		xlabel style={at={(ticklabel* cs:1)}, anchor=north},
+% 		ylabel style={at={(ticklabel* cs:1)}, anchor=south},
+% 	%	every axis y label/.style={
+% 	%		at={(ticklabel* cs:1.05)},
+% 	%		anchor=south,
+% 	%	}, 
+% 		xtick={10, 8}, xticklabels={$A_L^*$, $A_E$},
+% 		ytick={7, 5}, yticklabels={$\tau_E$, $\tau_L^*$},
+% 		xmin = 0, 
+% 		xmax = 18, 
+% 		ymin = 0, 
+% 		ymax = 18
+% 		]
+		
+% 		%% MAB curve
+% 		\addplot[name path=MAB, domain={0:15}, thick] {15-x} node[above right]{$MAB$};
+% 		%% MAC_L curve
+% 		\addplot[name path=MAC_L, domain={0:15}, thick] {0.5*x} node[right]{$MAC_L$};
+% 		%%% Define E[MAC] curve
+% 		\addplot[name path=EMAC, domain={0:15}, thick, dashed] {3 + 0.5*x} node[right]{$E\left[MAC\right]$};
+% 		%% MAC_H curve
+% 		\addplot[name path=MAC_H, domain={0:15}, thick] {6 + 0.5*x} node[right]{$MAC_H$};
+		
+% 		%% Equilibria
+% 		\coordinate (yend) at (0,50);
+% 		\coordinate (xend) at (50,0);
+% 		\path [name intersections={of=MAB and EMAC, by={eqm_e}}]; 
+% 		\fill (eqm_e) circle (2pt);
+% 		\path [name intersections={of=MAB and MAC_L, by={eqm_t}}]; 
+% 		\fill (eqm_t) circle (2pt);
+% 		\draw[dashed]  (yend |- eqm_e) -- (eqm_e) -- (eqm_e |- xend);
+% 		\draw[dashed] (eqm_e) -- (140, 70);
+% 		\draw[densely dotted]  (yend |- eqm_t) -- (eqm_t) -- (eqm_t |- xend);
+		
+% 		%% DWL
+% 		\addplot[fill=myred!50]fill between[of=MAC_L and MAB, soft clip={domain=10:14}];
+% 		\addplot[fill=myblue!50]fill between[of=MAC_L and MAB, soft clip={domain=8:10}];
+% 		\node[coordinate, pin={[pin edge={myred}]345:{{\scriptsize \color{myred}Tax DWL}}}] at (axis cs:13.5, 4.5){};
+% 		\node[coordinate, pin={[pin edge={myblue}]205:{{\scriptsize \color{myblue}Permits DWL}}}] at (axis cs:8.5, 5.5){};
+		
+
+% 		\end{axis}
+% 		\end{tikzpicture}
+% 	\end{figure}
+
+% 	$MAC$ \underline{flat} relative to $MAB$, but uncertain. (Truth is $MAC_L$.)
+
+% \end{frame}
 
 %----------- new slide ---------------------------------------%
 
