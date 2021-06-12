@@ -152,8 +152,8 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 %		at={(ticklabel* cs:1.05)},
 %		anchor=south,
 %	}, 
-	xtick={3, 5}, xticklabels={$e^*$,$e_m$},
-	ytick={15, 31}, yticklabels={$p_m$,$p^*$},
+	xtick={3, 5}, xticklabels={$e^*$,$e_u$},
+	ytick={15, 31}, yticklabels={$p_u$,$p^*$},
 	xmin = 0, 
 	xmax = 8, 
 	ymin = 0, 
@@ -172,9 +172,9 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	%% Equilibria
 	\coordinate (yend) at (0,75);
 	\coordinate (xend) at (8,0);
-	\path [name intersections={of=MB and PMC, by={eqm_m}}]; 
+	\path [name intersections={of=MB and PMC, by={eqm_u}}]; 
 	\path [name intersections={of=MB and SMC, by={eqm_s}}]; 
-	\draw[densely dashed]  (yend |- eqm_m) -- (eqm_m) -- (eqm_m |- xend);
+	\draw[densely dashed]  (yend |- eqm_u) -- (eqm_u) -- (eqm_u |- xend);
 	\draw[densely dashed]  (yend |- eqm_s) -- (eqm_s) -- (eqm_s |- xend);
 	
 	%% DWL
