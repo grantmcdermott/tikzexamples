@@ -93,7 +93,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 %----------- new section -------------------------------------%
 
-\section{Public goods taxonomy}
+\section{Public goods}
 
 %----------- new slide ---------------------------------------%
 
@@ -110,6 +110,85 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 		\node[left] at (9.5,4.25) {\scriptsize \textbf{PURE PUBLIC GOODS}};
 		\end{tikzpicture}
 	\end{figure}
+\end{frame}
+
+%----------- new slide ---------------------------------------% 
+
+\begin{frame}{Public goods example}
+
+	For this example, $X$ and $Y$ are neighbours that both benefit if either of them spend some hours gardening ($H$).
+	\begin{itemize}
+		\item {\color{myblue}$MB_X = 5 + \frac{1}{2}H$}
+		\item {\color{mygreen}$MB_Y = 5 + H$}
+	\end{itemize}
+
+	Note that the implied social marginal benefit curve (i.e. $SMB = MB_X + MB_Y$) has a kink.
+	% 
+	{\color{myred}\begin{align*}
+		SMB =	&= 10 + \frac{3}{2}  &\text{if } H < 5 \\
+				& = 5 + \frac{1}{2}  &\text{if } H \geq 5 
+	\end{align*}}
+	% 
+	We'll also assume that $MC = 4$.
+	
+\end{frame}
+%----------- new slide ---------------------------------------%
+
+\begin{frame}{Public goods example (cont.)}
+
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}%[yscale=1.25, xscale=1.25]
+			\begin{axis}[
+				axis lines=middle,
+				xlabel=\textbf{Hours},
+				ylabel=\textbf{Utility},
+				ylabel near ticks, 
+				every axis x label/.style={
+					at={(ticklabel* cs:1.05)},
+					anchor=west,
+				},
+				every axis y label/.style={
+					at={(ticklabel* cs:1.05)},
+					anchor=south,
+				},
+				xtick={2, 4, 5, 10}, 
+				ytick={10, 5, 4, 2.5},
+				% xmin = 0, 
+				xmax = 12, 
+				% ymin = 0, 
+				ymax = 12,
+				% width = 8cm,
+				% height = 8cm,
+				]
+		
+				%%% Define MC curve
+				\addplot[name path=MC, domain={0:10}, thick, dashed] {4} node[right]{$MC$};
+				%% SMB curve (1)
+				\addplot[name path=SMB1, domain={0:5}, very thick, myred] {5-0.5*x + 5-x};
+				%% SMB curve (2)
+				\addplot[name path=SMB2, domain={5:10}, very thick, myred] {5-0.5*x} node[above right]{$SMB$};
+				%% MB_X curve
+				\addplot[name path=MB_X, domain={0:10}, thick, densely dashed, myblue] {5-0.5*x} node[pos=0.1, above]{$MB_X$};
+				%% MB_Y curve
+				\addplot[name path=MB_Y, domain={0:5}, thick, densely dashed, mygreen] {5-x} node[pos=0.35, left]{$MB_Y$};
+				
+				%% Equilibria
+				\coordinate (yend) at (0,100);
+				\coordinate (xend) at (100,0);
+				\path [name intersections={of=MB_X and MC, by={eqm_X}}];
+				\draw[thin, densely dashed, myblue]  (eqm_X) -- (eqm_X |- xend); 
+				\path [name intersections={of=MB_Y and MC, by={eqm_Y}}];
+			%	\draw[thin, densely dashed, mygreen]  (eqm_Y) -- (eqm_Y |- xend); 
+				\path [name intersections={of=SMB1 and MC, by={eqm_s}}]; 
+				\draw[thin, densely dashed, myred]  (eqm_s) -- (eqm_s |- xend);
+				\path [name intersections={of=SMB1 and MB_X, by={eqm_kink}}]; 
+				\draw[thin, densely dashed, lightgray]  (yend |- eqm_kink) -- (eqm_kink) -- (eqm_kink |- xend);
+			
+			\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+
 \end{frame}
 
 
@@ -131,9 +210,10 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 	We'll compare the unregulated and social outcomes, and highlight the resulting deadweight loss.
 	
 \end{frame}
+
 %----------- new slide ---------------------------------------%
 
-\begin{frame}{Externality with deadweight loss}
+\begin{frame}{Externality with deadweight loss (cont.)}
 
 \begin{figure}
 	\centering
@@ -207,7 +287,7 @@ hyperref={colorlinks,citecolor=blue,linkcolor=blue,urlcolor=blue}
 
 %----------- new slide ---------------------------------------% 
 
-\begin{frame}{Tradeable permits}
+\begin{frame}{Tradeable permits (cont.)}
 
 	\begin{figure}
 		\centering
